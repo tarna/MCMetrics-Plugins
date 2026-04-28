@@ -10,9 +10,11 @@ import org.jetbrains.annotations.NotNull;
 @Data
 public class ServerPerformanceAnalytic implements NamedAnalytic {
 
-    private final @NotNull double cpuUsage;
-    private final @NotNull double memoryUsage;
-    private final @NotNull double diskUsage;
+    private final @NotNull long cpuTime;
+    private final @NotNull long memoryUsage;
+    private final @NotNull long allocatedMemory;
+    private final @NotNull long diskUsage;
+    private final @NotNull long diskSpace;
     private final @NotNull double ticksPerSecond;
     private final @NotNull double millisecondsPerTick;
 

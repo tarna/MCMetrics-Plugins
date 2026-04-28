@@ -3,6 +3,7 @@
 shadow = "9.3.0"
 plugin-yml = "0.9.0"
 run-paper = "3.0.2"
+fabric-loom = "1.15-SNAPSHOT"
 
 # Dependencies
 toml4j = "0.7.2"
@@ -15,16 +16,21 @@ cloud-bukkit = "2.0.0-beta.14"
 cloud-paper = "2.0.0-beta.14"
 cloud-velocity = "2.0.0-beta.14"
 cloud-bungee = "2.0.0-beta.14"
+cloud-fabric = "2.0.0-beta.9"
 uuid-generator = "5.1.0"
 velocity-api = "3.5.0-SNAPSHOT"
 bungeecord-api = "1.21-R0.4"
 folia-api = "1.21.11-R0.1-SNAPSHOT"
+minecraft = "1.21.1"
+fabric-loader = "0.19.2"
+fabric-api = "0.116.11+1.21.1"
 
 [plugins]
 shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
 plugin-yml-paper = { id = "de.eldoria.plugin-yml.paper", version.ref = "plugin-yml" }
 plugin-yml-bungee = { id = "de.eldoria.plugin-yml.bungee", version.ref = "plugin-yml" }
 run-paper = { id = "xyz.jpenilla.run-paper", version.ref = "run-paper" }
+fabric-loom = { id = "net.fabricmc.fabric-loom-remap", version.ref = "fabric-loom" }
 
 [libraries]
 jtoml = { module = "com.moandjiezana.toml:toml4j", version.ref = "toml4j" }
@@ -37,7 +43,11 @@ cloud-annotations = { module = "org.incendo:cloud-annotations", version.ref = "c
 cloud-paper = { module = "org.incendo:cloud-paper", version.ref = "cloud-paper" }
 cloud-velocity = { module = "org.incendo:cloud-velocity", version.ref = "cloud-velocity" }
 cloud-bungee = { module = "org.incendo:cloud-bungee", version.ref = "cloud-bungee" }
+cloud-fabric = { module = "org.incendo:cloud-fabric", version.ref = "cloud-fabric" }
 uuid-generator = { module = "com.fasterxml.uuid:java-uuid-generator", version.ref = "uuid-generator" }
-velocity-api = { module = "com.velocitypowered:velocity-api", version.ref="velocity-api" }
-bungeecord-api = { module = "net.md-5:bungeecord-api", version.ref="bungeecord-api" }
-folia-api = { module = "dev.folia:folia-api", version.ref="folia-api" }
+velocity-api = { module = "com.velocitypowered:velocity-api", version.ref = "velocity-api" }
+bungeecord-api = { module = "net.md-5:bungeecord-api", version.ref = "bungeecord-api" }
+folia-api = { module = "dev.folia:folia-api", version.ref = "folia-api" }
+minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
+fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric-loader" }
+fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric-api" }

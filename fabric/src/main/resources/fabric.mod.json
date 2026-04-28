@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "mcmetrics",
+  "version": "${version}",
+  "name": "MCMetrics",
+  "description": "Advanced analytics tracking for your Minecraft server.",
+  "authors": [
+    "MCMetrics"
+  ],
+  "contact": {
+    "homepage": "https://mcmetrics.net/",
+    "sources": "https://github.com/hoglin-analytics/MCMetrics-Plugins"
+  },
+  "environment": "server",
+  "entrypoints": {
+    "server": [
+      "net.mcmetrics.fabric.MCMetrics"
+    ]
+  },
+  "mixins": [
+    {
+      "config": "mcmetrics.mixins.json",
+      "environment": "server"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.2",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*",
+    "cloud": "*"
+  }
+}

@@ -1,11 +1,11 @@
-package net.mcmetrics.bukkit.connection;
+package net.mcmetrics.fabric.connection;
 
 import lombok.SneakyThrows;
-import net.mcmetrics.bukkit.MCMetrics;
+import net.mcmetrics.fabric.MCMetrics;
 import net.mcmetrics.common.analytic.server.ServerPerformanceAnalytic;
 import net.mcmetrics.common.analytic.server.ServerPlayerCountAnalytic;
 import net.mcmetrics.common.player.TrackedPlayer;
-import org.bukkit.Bukkit;
+import net.mcmetrics.fabric.TpsUtils;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
@@ -16,8 +16,6 @@ import java.nio.file.Paths;
 public class ConnectionManager {
 
     private final MCMetrics mcMetrics;
-    private final OperatingSystemMXBean osBean;
-    private final Runtime runtime;
 
     private final ThreadMXBean threadMXBean;
     private final FileStore fileStore;
@@ -25,7 +23,6 @@ public class ConnectionManager {
 
     private final long allocatedMemory;
     private final long diskSize;
-
 
     @SneakyThrows
     public ConnectionManager(final MCMetrics mcMetrics) {
@@ -39,6 +36,7 @@ public class ConnectionManager {
         this.allocatedMemory = this.runtime.maxMemory();
     }
 
+    // Gonna leave this untouched even though Fabric doesn't allow for Bedrock anyway
     public void pushPlayerCountUpdate() {
         int javaCount = 0;
         int bedrockCount = 0;
@@ -60,12 +58,15 @@ public class ConnectionManager {
 
     @SneakyThrows
     public void pushPerformanceUpdate() {
-        double tps = Bukkit.getTPS()[0]; // In Folia this would get the average TPS across all loaded regions
-        double mspt = Bukkit.getAverageTickTime();
+        // TPS & MSPT
+        double tps = TpsUtils.getTps();
+        double mspt = TpsUtils.getMspt();
 
+        // CPU, Memory, Disk
         long cpuTime = this.threadMXBean.getCurrentThreadCpuTime();
         long memUsage = this.allocatedMemory - runtime.freeMemory();
         long diskUsage = this.diskSize - this.fileStore.getUsableSpace();
+
 
         mcMetrics.getHoglin().track(new ServerPerformanceAnalytic(
                 cpuTime,
@@ -77,4 +78,5 @@ public class ConnectionManager {
                 mspt
         ));
     }
+
 }
