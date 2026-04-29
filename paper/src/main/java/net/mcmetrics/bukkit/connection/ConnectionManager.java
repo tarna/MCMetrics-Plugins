@@ -16,8 +16,6 @@ import java.nio.file.Paths;
 public class ConnectionManager {
 
     private final MCMetrics mcMetrics;
-    private final OperatingSystemMXBean osBean;
-    private final Runtime runtime;
 
     private final ThreadMXBean threadMXBean;
     private final FileStore fileStore;
