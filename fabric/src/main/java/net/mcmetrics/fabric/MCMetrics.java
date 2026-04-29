@@ -13,7 +13,6 @@ import net.mcmetrics.fabric.command.ReloadCommand;
 import net.mcmetrics.fabric.command.TrackPurchaseCommand;
 import net.mcmetrics.fabric.config.MCMetricsFabricConfig;
 import net.mcmetrics.fabric.connection.ConnectionManager;
-import net.mcmetrics.fabric.listener.PlayerChatListener;
 import net.mcmetrics.fabric.listener.PlayerJoinListener;
 import net.mcmetrics.fabric.listener.PlayerQuitListener;
 import net.mcmetrics.fabric.task.ServerHeartbeatTask;
@@ -62,7 +61,6 @@ public class MCMetrics implements DedicatedServerModInitializer {
 
         // Probably a terrible way to register events
         List<Listener> listeners = List.of(
-                new PlayerChatListener(this),
                 new PlayerJoinListener(this),
                 new PlayerQuitListener(this)
         );
