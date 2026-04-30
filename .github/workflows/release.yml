@@ -30,8 +30,21 @@ jobs:
         arguments: build
 
     - name: Publish GitHub Release
+      id: github_release
       uses: softprops/action-gh-release@v2
       with:
         files: build/release/*.jar
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Send Discord Notification
+      uses: appleboy/discord-action@v1.2.0
+      with:
+        webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        username: "MCMetrics"
+        avatar_url: "https://mcmetrics.net/assets/small.png"
+        color: "#5a51ef"
+        message: |
+          New release of MCMetrics has been published: ${{ env.VERSION }}
+
+          Download the release here: ${{ steps.github_release.outputs.url }}
